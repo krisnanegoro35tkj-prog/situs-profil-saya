@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil & Kartu Digital Profesional</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome untuk Ikon Media Sosial -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheet (Light Theme) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+
+  <!-- ==================== ADMIN BAR (HANYA AKTIF SAAT LOGIN) ==================== -->
+  <aside id="adminBar" class="admin-topbar hidden">
+    <div class="container admin-bar-container">
+      <div class="admin-badge">
+        <span class="status-pulse"></span>
+        <span>Mode Admin Aktif</span>
+      </div>
+      <div class="admin-quick-actions">
+        <button id="openEditorBtn" class="btn btn-sm btn-primary">
+          <i class="fas fa-pen-to-square"></i> Kelola Konten Web
+        </button>
+        <button id="openSecurityBtn" class="btn btn-sm btn-outline">
+          <i class="fas fa-key"></i> Ubah Password
+        </button>
+        <button id="logoutBtn" class="btn btn-sm btn-danger-soft">
+          <i class="fas fa-right-from-bracket"></i> Keluar
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== HEADER & NAVIGASI ==================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#home" class="brand-logo" onclick="navigateToPage('home')">
+        <span class="logo-circle" id="navLogoInitial">R</span>
+        <span class="brand-name" id="navBrandName">Rian Pratama</span>
+      </a>
+
+      <!-- Menu Navigasi 3 Halaman -->
+      <nav class="main-navigation">
+        <button class="nav-item active" data-page="home" onclick="navigateToPage('home')">
+          <i class="fas fa-house"></i>
+          <span>Halaman Utama</span>
+        </button>
+        <button class="nav-item" data-page="profile" onclick="navigateToPage('profile')">
+          <i class="fas fa-user"></i>
+          <span>Profil Saya</span>
+        </button>
+        <button class="nav-item" data-page="contact" onclick="navigateToPage('contact')">
+          <i class="fas fa-share-nodes"></i>
+          <span>Kontak & Sosial Media</span>
+        </button>
+      </nav>
+
+      <!-- Tombol Aksi Kanan (Admin Login) -->
+      <div class="header-actions">
+        <button id="loginTriggerBtn" class="admin-lock-btn" title="Login Khusus Pemilik / Admin">
+          <i class="fas fa-lock"></i>
+          <span class="admin-label">Admin</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== KONTEN UTAMA (3 HALAMAN) ==================== -->
+  <main class="main-content">
+
+    <!-- ==================== 1. HALAMAN UTAMA ==================== -->
+    <section id="pageHome" class="page-section active">
+      <div class="container">
+        
+        <div class="hero-wrapper">
+          <!-- Kolom Teks Sambutan -->
+          <div class="hero-text-col">
+            <div class="greeting-badge">
+              <span class="greeting-dot"></span>
+              <span id="heroBadgeText">Selamat datang di situs resmi saya</span>
+            </div>
+            
+            <h1 class="hero-title">
+              Halo, Saya <span class="text-highlight" id="homeDisplayName">Rian Pratama</span>
+            </h1>
+            
+            <p class="hero-subtitle" id="homeDisplayRole">
+              Praktisi Teknologi, Web Developer & Spesialis Pengalaman Pengguna (UI/UX)
+            </p>
+            
+            <p class="hero-lead" id="homeDisplayTagline">
+              Fokus dalam merancang dan mengembangkan solusi digital modern yang fungsional, terstruktur dengan baik, serta memberikan nilai nyata bagi pengguna.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="navigateToPage('profile')">
+                <i class="fas fa-address-card"></i> Pelajari Profil Saya
+              </button>
+              <button class="btn btn-secondary" onclick="navigateToPage('contact')">
+                <i class="fas fa-comments"></i> Terhubung via Media Sosial
+              </button>
+            </div>
+
+            <!-- Tautan Cepat Media Sosial di Beranda -->
+            <div class="home-social-preview">
+              <span class="preview-label">Kanal Media Sosial Utama:</span>
+              <div id="homeQuickLinks" class="quick-icons-list">
+                <!-- Diisi via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Foto Profil Beranda -->
+          <div class="hero-image-col">
+            <div class="avatar-card">
+              <div class="avatar-frame">
+                <img id="homeDisplayAvatar" src="" alt="Foto Profil" class="avatar-img">
+              </div>
+              <div class="avatar-status-pill">
+                <span class="status-indicator"></span>
+                <span>Terbuka untuk Kolaborasi Digital</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlight Keunggulan / Nilai Utama -->
+        <div class="highlights-grid">
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-layer-group"></i></div>
+            <h3>Pendekatan Terstruktur</h3>
+            <p>Memprioritaskan arsitektur informasi yang rapi, bersih, dan mudah diakses oleh semua kalangan.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Teknologi Terkini</h3>
+            <p>Memanfaatkan standar pengembangan web modern dengan performa tinggi dan ramah perangkat bergerak.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Komunikasi Terbuka</h3>
+            <p>Senantiasa siap berdiskusi seputar peluang inovasi dan proyek digital melalui kanal media sosial resmi.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 2. HALAMAN PROFIL ==================== -->
+    <section id="pageProfile" class="page-section">
+      <div class="container">
+        
+        <div class="page-heading">
+          <span class="heading-tag">Tentang Saya</span>
+          <h2>Profil Profesional</h2>
+          <p class="heading-desc">Mengenal lebih dekat latar belakang, pengalaman, dan fokus keahlian saya.</p>
+        </div>
+
+        <div class="profile-layout">
+          <!-- Sidebar Profil (Foto & Ringkasan Peran) -->
+          <div class="profile-sidebar">
+            <div class="profile-card-sticky">
+              <div class="profile-avatar-box">
+                <img id="profileDisplayAvatar" src="" alt="Foto Profil Lengkap" class="profile-large-img">
+              </div>
+              <h3 id="profileDisplayName" class="profile-name">Rian Pratama</h3>
+              <p id="profileDisplayTitle" class="profile-role">Web Developer & UI/UX Specialist</p>
+              
+              <div class="profile-quote-box">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p id="profileDisplayQuote">"Desain dan kode yang baik adalah yang mampu menyelesaikan masalah nyata secara sederhana."</p>
+              </div>
+
+              <button class="btn btn-block btn-secondary" onclick="navigateToPage('contact')">
+                <i class="fas fa-paper-plane"></i> Hubungi Saya Sekarang
+              </button>
+            </div>
+          </div>
+
+          <!-- Konten Biografi & Keahlian -->
+          <div class="profile-main-content">
+            
+            <!-- Biografi Ringkas -->
+            <div class="content-block">
+              <h3 class="block-title"><i class="fas fa-id-card-clip"></i> Biografi Singkat</h3>
+              <div id="profileDisplayBio" class="bio-text">
+                <p>Memuat biografi...</p>
+              </div>
+            </div>
+
+            <!-- Bidang Keahlian & Spesialisasi -->
+            <div class="content-block">
+              <h3 class="block-title"><i class="fas fa-shapes"></i> Fokus Keahlian & Spesialisasi</h3>
+              <p class="block-desc">Berikut adalah beberapa cakupan keahlian utama yang saya tekuni secara konsisten:</p>
+              
+              <div id="profileSkillsContainer" class="skills-list">
+                <!-- Diisi via JS -->
+              </div>
+            </div>
+
+            <!-- Prinsip Kerja -->
+            <div class="content-block">
+              <h3 class="block-title"><i class="fas fa-compass"></i> Nilai & Prinsip Kerja</h3>
+              <div class="principles-grid">
+                <div class="principle-item">
+                  <h4>Integritas & Kualitas</h4>
+                  <p>Menghargai ketepatan waktu serta memastikan setiap karya dikerjakan dengan standar kualitas yang baik.</p>
+                </div>
+                <div class="principle-item">
+                  <h4>Pembelajaran Berkelanjutan</h4>
+                  <p>Terus memperbarui wawasan dan keterampilan mengikuti perkembangan dinamika industri teknologi.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. HALAMAN KONTAK ==================== -->
+    <section id="pageContact" class="page-section">
+      <div class="container">
+        
+        <div class="page-heading text-center">
+          <span class="heading-tag">Saluran Resmi</span>
+          <h2>Koneksi Media Sosial</h2>
+          <p class="heading-desc">
+            Untuk keperluan profesional maupun diskusi santai, silakan terhubung melalui akun-akun media sosial resmi saya di bawah ini.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Daftar Tautan Media Sosial -->
+          <div class="social-channels-column">
+            <div id="contactSocialGrid" class="social-cards-grid">
+              <!-- Diisi via JS -->
+            </div>
+          </div>
+
+          <!-- Info Box & Catatan Menghubungi -->
+          <div class="contact-notice-column">
+            <div class="notice-card">
+              <div class="notice-icon">
+                <i class="fas fa-circle-info"></i>
+              </div>
+              <h3>Panduan Menghubungi</h3>
+              <p>
+                Demi efisiensi dan privasi bersama, seluruh komunikasi dilakukan secara terpusat melalui kanal media sosial resmi di samping.
+              </p>
+              <ul class="notice-points">
+                <li><i class="fas fa-check"></i> <b>LinkedIn</b> untuk peluang kerja sama, diskusi karier, dan proyek formal.</li>
+                <li><i class="fas fa-check"></i> <b>GitHub</b> untuk meninjau repositori proyek sumber terbuka dan portofolio kode.</li>
+                <li><i class="fas fa-check"></i> <b>Instagram / X</b> untuk interaksi sosial yang lebih fleksibel.</li>
+              </ul>
+              <div class="notice-footer">
+                <p><i class="fas fa-shield-halved"></i> Terverifikasi sebagai halaman resmi pribadi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p>© <span id="currentYear"></span> <b id="footerAuthorName">Rian Pratama</b>. Seluruh Hak Cipta Dilindungi.</p>
+      <p class="footer-sub">Dirancang dengan HTML5, CSS3, dan JavaScript murni. Siap dipublikasikan di Vercel.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL DIALOGS ==================== -->
+
+  <!-- 1. Modal Login Admin -->
+  <div id="loginModal" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i class="fas fa-shield-halved modal-icon"></i>
+          <div>
+            <h3>Login Khusus Admin</h3>
+            <p>Pengunjung biasa tidak perlu masuk ke halaman ini.</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" data-close="loginModal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="loginErrorMsg" class="alert-box alert-error hidden">
+          Username atau password salah!
+        </div>
+
+        <form id="loginForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="adminUsername">Username Admin</label>
+            <div class="input-icon-wrapper">
+              <i class="fas fa-user"></i>
+              <input type="text" id="adminUsername" placeholder="Masukkan username" required autocomplete="username">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="adminPassword">Password</label>
+            <div class="input-icon-wrapper">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="adminPassword" placeholder="Masukkan password" required autocomplete="current-password">
+            </div>
+            <small class="form-hint">Kredensial bawaan: Username <b>admin</b> / Password <b>admin123</b></small>
+          </div>
+
+          <button type="submit" id="submitLoginBtn" class="btn btn-block btn-primary">
+            <i class="fas fa-right-to-bracket"></i> Masuk Sebagai Admin
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Modal Kelola Konten Web (Admin Editor) -->
+  <div id="editorModal" class="modal-backdrop hidden">
+    <div class="modal-box modal-xl">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i class="fas fa-sliders modal-icon"></i>
+          <div>
+            <h3>Pusat Pengelolaan Konten Website</h3>
+            <p>Perubahan yang Anda simpan akan langsung aktif di ketiga halaman.</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" data-close="editorModal">&times;</button>
+      </div>
+
+      <!-- Tab Editor -->
+      <div class="modal-tabs">
+        <button class="tab-btn active" data-tab="tabEditGeneral">
+          <i class="fas fa-user-pen"></i> Informasi Umum & Beranda
+        </button>
+        <button class="tab-btn" data-tab="tabEditProfile">
+          <i class="fas fa-file-lines"></i> Biografi & Keahlian
+        </button>
+        <button class="tab-btn" data-tab="tabEditPhoto">
+          <i class="fas fa-image"></i> Foto Profil
+        </button>
+        <button class="tab-btn" data-tab="tabEditSocial">
+          <i class="fas fa-share-nodes"></i> Akun Media Sosial
+        </button>
+      </div>
+
+      <div class="modal-body modal-scroll-body">
+        
+        <!-- Tab 1: Umum & Beranda -->
+        <div id="tabEditGeneral" class="tab-content active">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="editName">Nama Lengkap & Gelar</label>
+              <input type="text" id="editName" placeholder="Contoh: Rian Pratama, S.Kom">
+            </div>
+            <div class="form-group">
+              <label for="editTitle">Peran / Profesi Utama</label>
+              <input type="text" id="editTitle" placeholder="Contoh: Web Developer & UI/UX Specialist">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editTagline">Kalimat Pengantar (Halaman Utama)</label>
+            <textarea id="editTagline" rows="2" placeholder="Tuliskan ikhtisar singkat sambutan di beranda..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="editQuote">Kutipan / Motto Singkat (Halaman Profil)</label>
+            <input type="text" id="editQuote" placeholder="Contoh: Menghadirkan solusi digital yang sederhana dan berdampak.">
+          </div>
+        </div>
+
+        <!-- Tab 2: Halaman Profil & Keahlian -->
+        <div id="tabEditProfile" class="tab-content">
+          <div class="form-group">
+            <label for="editBio">Biografi Lengkap (Format Paragraf)</label>
+            <textarea id="editBio" rows="6" placeholder="Ceritakan latar belakang, perjalanan karier, dan fokus kerja Anda..."></textarea>
+            <small class="form-hint">Pisahkan antar paragraf dengan menekan tombol Enter.</small>
+          </div>
+
+          <div class="form-group">
+            <label>Daftar Fokus Keahlian & Spesialisasi</label>
+            <div id="skillsEditList" class="skills-manager-container">
+              <!-- Dinamis via JS -->
+            </div>
+            <button id="addSkillBtn" class="btn btn-sm btn-secondary" style="margin-top: 8px;">
+              <i class="fas fa-plus"></i> Tambah Keahlian Baru
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 3: Foto Profil -->
+        <div id="tabEditPhoto" class="tab-content">
+          <div class="photo-editor-layout">
+            <div class="photo-preview-card">
+              <img id="photoEditorPreview" src="" alt="Pratinjau Foto" class="preview-img">
+              <span class="preview-tag">Pratinjau Saat Ini</span>
+            </div>
+
+            <div class="photo-controls">
+              <div class="form-group">
+                <label for="uploadPhotoInput"><i class="fas fa-cloud-arrow-up"></i> Unggah File dari Komputer / HP</label>
+                <input type="file" id="uploadPhotoInput" accept="image/*" class="file-picker">
+                <small class="form-hint">Dukungan: JPG, PNG, WEBP (Maksimal 3MB). Otomatis disimpan ke peramban via Base64.</small>
+              </div>
+
+              <div class="form-divider">
+                <span>atau menggunakan URL gambar online</span>
+              </div>
+
+              <div class="form-group">
+                <label for="editPhotoUrl">Tautan Gambar (URL Web)</label>
+                <input type="url" id="editPhotoUrl" placeholder="https://domain.com/foto-anda.jpg">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Media Sosial (Halaman Kontak) -->
+        <div id="tabEditSocial" class="tab-content">
+          <div class="social-tab-header">
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 4px;">Kelola Saluran Media Sosial</h4>
+              <p class="form-hint">Atur akun media sosial resmi yang dapat dihubungi oleh pengunjung.</p>
+            </div>
+            <button id="addNewSocialBtn" class="btn btn-sm btn-primary">
+              <i class="fas fa-plus"></i> Tambah Media Sosial
+            </button>
+          </div>
+
+          <div id="socialEditList" class="social-edit-table">
+            <!-- Dinamis via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-close="editorModal">Batal</button>
+        <button id="saveAllChangesBtn" class="btn btn-primary">
+          <i class="fas fa-check"></i> Simpan Seluruh Perubahan
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Modal Tambah / Edit Satu Media Sosial -->
+  <div id="singleSocialModal" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="singleSocialTitle"><i class="fas fa-share-nodes"></i> Tambah Akun Media Sosial</h3>
+        <button class="modal-close-btn" data-close="singleSocialModal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="singleSocialForm" onsubmit="return false;">
+          <input type="hidden" id="socialEditId">
+
+          <div class="form-group">
+            <label for="socialPlatformSelect">Pilih Platform Media Sosial</label>
+            <select id="socialPlatformSelect">
+              <option value="linkedin">LinkedIn</option>
+              <option value="github">GitHub</option>
+              <option value="instagram">Instagram</option>
+              <option value="telegram">Telegram</option>
+              <option value="twitter">X (Twitter)</option>
+              <option value="youtube">YouTube</option>
+              <option value="threads">Threads</option>
+              <option value="discord">Discord</option>
+              <option value="website">Website Portofolio</option>
+              <option value="custom">Platform Lainnya</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="socialHandleInput">Nama Akun / Username</label>
+            <input type="text" id="socialHandleInput" placeholder="Contoh: @rianpratama" required>
+          </div>
+
+          <div class="form-group">
+            <label for="socialDescInput">Fungsi / Keterangan Singkat</label>
+            <input type="text" id="socialDescInput" placeholder="Contoh: Untuk diskusi kerja sama profesional" required>
+          </div>
+
+          <div class="form-group">
+            <label for="socialUrlInput">Tautan Profil Lengkap (URL)</label>
+            <input type="url" id="socialUrlInput" placeholder="https://linkedin.com/in/rianpratama" required>
+            <small class="form-hint">Pastikan diawali dengan https://</small>
+          </div>
+
+          <button type="submit" id="saveSingleSocialBtn" class="btn btn-block btn-primary">
+            <i class="fas fa-save"></i> Simpan Media Sosial
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Modal Ubah Password Admin -->
+  <div id="securityModal" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fas fa-shield-halved"></i> Ubah Password Admin</h3>
+        <button class="modal-close-btn" data-close="securityModal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="changePasswordForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="oldPasswordInput">Password Saat Ini</label>
+            <input type="password" id="oldPasswordInput" placeholder="Masukkan password sekarang" required>
+          </div>
+          <div class="form-group">
+            <label for="newPasswordInput">Password Baru</label>
+            <input type="password" id="newPasswordInput" placeholder="Minimal 4 karakter" required>
+          </div>
+          <button type="submit" id="saveNewPasswordBtn" class="btn btn-block btn-primary">
+            <i class="fas fa-key"></i> Perbarui Password
+          </button>
+        </form>
+
+        <div class="reset-zone">
+          <p>Butuh mengembalikan profil ke setelan standar bawaan?</p>
+          <button id="resetDefaultsBtn" class="btn btn-sm btn-danger-soft">
+            <i class="fas fa-rotate-left"></i> Reset ke Data Default
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifikasi Ringan -->
+  <div id="toast" class="toast-box hidden">
+    <i id="toastIcon" class="fas fa-circle-check"></i>
+    <span id="toastMsg">Pesan notifikasi</span>
+  </div>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
